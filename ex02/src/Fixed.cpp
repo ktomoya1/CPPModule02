@@ -59,18 +59,23 @@ int Fixed::operator-(const Fixed& other) {
 }
 
 int Fixed::operator*(const Fixed& other) {
-  int o_num = other.getRawBits();
+  int t = this->getRawBits();
+      o = other.getRawBits(),
 
-  if (o_num != 0 && (INT_MAX / o_num > this->getRawBits())) {
+  if (o != 0 && ((INT_MAX / o) > t)) {
     return INT_MAX;
   }
-  return (this->getRawBits() * other.getRawBits()) >> kFractionalBits;
+  return (t * o) >> kFractionalBits;
 }
 
 int Fixed::operator/(const Fixed& other) {
-  if (other.getRawBits() == 0) {
-    return (this->getRawBits() << kFractionalBits) / 1;
-  return (this->getRawBits() << kFractionalBits) / other.getRawBits();
+  int t = this->getRawBits();
+      o = other.getRawBits();
+
+  if (o == 0) {
+    o = 1;
+  }
+  return (t << kFractionalBits) / o;
 }
 
 int Fixed::getRawBits() const {
