@@ -14,7 +14,7 @@ Fixed::Fixed(const int int_value) {
 
 Fixed::Fixed(const float float_value) {
   std::cout << "Float constructor called" << std::endl;
-  this->fixed_value_ = static_cast<int>(roundf(float_value * (1 << kFractionalBits)));
+  this->setRawBits(static_cast<int>(roundf(float_value * (1 << kFractionalBits))));
 }
 
 Fixed::Fixed(const Fixed& other)
