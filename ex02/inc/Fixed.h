@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cmath>
+#include <climits>
 #include <iostream>
 
 class Fixed {
