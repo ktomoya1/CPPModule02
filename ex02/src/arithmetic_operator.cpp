@@ -49,9 +49,9 @@ Fixed Fixed::operator/(const Fixed& other) {
   int o = other.getRawBits();
   Fixed ret;
 
-  if (o == 0) {
-    o = 1 << kFractionalBits;
-  }
+//  if (o == 0) {
+//    o = 1 << kFractionalBits;
+//  }
   ret.setRawBits((t << kFractionalBits) / o);
   return ret;
 }
