@@ -2,56 +2,26 @@
 
 #include <climits>
 
-Fixed Fixed::operator+(const Fixed& other) {
-  int t = this->getRawBits();
-  int o = other.getRawBits();
+Fixed Fixed::operator+(const Fixed& other) const {
   Fixed ret;
-
-//  if (t > INT_MAX - o) {
-//    ret.setRawBits(INT_MAX);
-//  } else {
-//    ret.setRawBits(t + o);
-//  }
-  ret.setRawBits(t + o);
+  ret.setRawBits(this->getRawBits() + other.getRawBits());
   return ret;
 }
 
-Fixed Fixed::operator-(const Fixed& other) {
-  int t = this->getRawBits();
-  int o = other.getRawBits();
+Fixed Fixed::operator-(const Fixed& other) const {
   Fixed ret;
-
-//  if (t < INT_MIN + o) {
-//    ret.setRawBits(INT_MIN);
-//  } else {
-//    ret.setRawBits(t - o);
-//  }
-  ret.setRawBits(t - o);
+  ret.setRawBits(this->getRawBits() - other.getRawBits());
   return ret;
 }
 
-Fixed Fixed::operator*(const Fixed& other) {
-  int t = this->getRawBits();
-  int o = other.getRawBits();
+Fixed Fixed::operator*(const Fixed& other) const {
   Fixed ret;
-
-//  if (o != 0 && ((INT_MAX / o) < t)) {
-//    ret.setRawBits(INT_MAX);
-//  } else {
-//    ret.setRawBits((t * o) >> kFractionalBits);
-//  }
-  ret.setRawBits((t * o) >> kFractionalBits);
+  ret.setRawBits((this->getRawBits() * other.getRawBits()) >> kFractionalBits);
   return ret;
 }
 
-Fixed Fixed::operator/(const Fixed& other) {
-  int t = this->getRawBits();
-  int o = other.getRawBits();
+Fixed Fixed::operator/(const Fixed& other) const {
   Fixed ret;
-
-//  if (o == 0) {
-//    o = 1 << kFractionalBits;
-//  }
-  ret.setRawBits((t << kFractionalBits) / o);
+  ret.setRawBits((this->getRawBits() << kFractionalBits) / other.getRawBits());
   return ret;
 }

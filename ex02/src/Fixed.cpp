@@ -10,8 +10,7 @@ Fixed::Fixed(const int int_value) {
 }
 
 Fixed::Fixed(const float float_value) {
-  this->fixed_value_ =
-      static_cast<int>(roundf(float_value * (1 << kFractionalBits)));
+  this->setRawBits(static_cast<int>(roundf(float_value * (1 << kFractionalBits))));
 }
 
 Fixed::Fixed(const Fixed& other) : fixed_value_(other.getRawBits()) {}
