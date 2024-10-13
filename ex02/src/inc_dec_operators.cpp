@@ -1,8 +1,8 @@
 #include "Fixed.h"
 
-int& Fixed::operator++() {
-  ++this->fixed_value_;
-  return this->fixed_value_;
+Fixed& Fixed::operator++() {
+  this->setRawBits(this->getRawBits() + 1);
+  return *this;
 }
 
 int Fixed::operator++(int) {
