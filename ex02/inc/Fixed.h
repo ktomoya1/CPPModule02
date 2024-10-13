@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cmath>
+#include <climits>
 #include <iostream>
 
 class Fixed {
@@ -23,9 +24,9 @@ class Fixed {
     Fixed  operator*(const Fixed& other);
     Fixed  operator/(const Fixed& other);
     Fixed& operator++();
-    int    operator++(int);
-    int&   operator--();
-    int    operator--(int);
+    Fixed  operator++(int);
+    Fixed& operator--();
+    Fixed  operator--(int);
 
     int   getRawBits() const;
     void  setRawBits(int const raw);
